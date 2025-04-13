@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  fastapi_app:
+    build: .
+    command: uvicorn fastapi_app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+
+  flask_app:
+    build: .
+    command: flask run --host=0.0.0.0 --port=5000
+    ports:
+      - "5000:5000"
+
+  discord_bot:
+    build: .
+    command: python discord_bot/bot.py
